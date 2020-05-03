@@ -1,8 +1,18 @@
+@font-face { 
+    font-family: 'KyoboHand'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/KyoboHand.woff') format('woff'); 
+    font-weight: normal; font-style: normal; }
+
 body{
+    font-family: "KyoboHand";
     display: flex;
 }
 
-body > div {
+h1 {
+    font-size: 1.5em;
+}
+
+.right{
     flex-grow: 1;
 }
 
