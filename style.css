@@ -19,3 +19,22 @@ h1 {
 .left{
     flex-grow: 3;
 }
+
+#writeTodo{
+    all: unset;
+    border-bottom: 1px solid slategrey;
+    resize: horizontal;
+    width: 200px;
+}
+
+#writeTodo :active {
+    width: auto;
+}
+
+#writeTodo :focus {
+    min-width: 200px;
+}
+
+#writeTodo::placeholder {
+    font-family: "Font Awesome 5 Free";
+}
