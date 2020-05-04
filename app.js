@@ -36,10 +36,13 @@ function deleteToDo(event){
 function handleSubmit(event){
     event.preventDefault();
     const currentTodo = todoInput.value;
-    paintTodo(currentTodo);
-    todoInput.value="";
+    if(currentTodo.length !== 0){
+        paintTodo(currentTodo);
+        todoInput.value="";
+    } else {
+        
+    }
 }
-
 function saveToDos(){
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }

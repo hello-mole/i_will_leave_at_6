@@ -23,6 +23,7 @@ button {
 /* ------------------- */
 .right{
     flex-grow: 2;
+    margin-left: 20px;
 }
 
 .left{
@@ -36,9 +37,13 @@ button {
 
 .writeTodo > input{
     all: unset;
-    border-bottom: 1px solid slategrey;
-    resize: horizontal;
-    width: 250px;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid #d3d3d3;
+    box-shadow: none;
+    color: #111;
 }
 
 .todo__container > div{
