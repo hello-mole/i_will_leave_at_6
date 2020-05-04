@@ -15,6 +15,11 @@ h1 {
 button, ul {
     all: unset;
 }
+
+button {
+    cursor: pointer;
+}
+
 /* ------------------- */
 .right{
     flex-grow: 2;
@@ -49,4 +54,15 @@ button, ul {
     background-color: slategrey !important;
     opacity: 0.5;
     color: lightgray;
+}
+
+.allDel{
+    background-color: slategrey;
+    border-radius: 0.3rem;
+    color: white;
+    width: 80px;
+    padding: 3px;
+    margin-right: 10px;
+    text-align: center;
+    float: right;
 }

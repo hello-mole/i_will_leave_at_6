@@ -1,11 +1,20 @@
 const todoForm = document.getElementById("js-writeTodo");
 const todoInput = document.querySelector("input");
 const todoList = document.querySelector(".js-todolist");
+const allDel = document.querySelector(".js-allDel");
 
 let toDos = [];
 
 const TODOS_LS = "todos";
 const DONE_CL = "donetodo";
+
+function handleDelAll(event){
+    toDos = [];
+    saveToDos();
+    while(todoList.hasChildNodes()){
+        todoList.removeChild(todoList.firstChild);
+    }
+}
 
 function doneToDo(event){
     const btn = event.target;
@@ -70,6 +79,7 @@ function drawTodos(){
 function init(){
     drawTodos()
     todoForm.addEventListener("submit", handleSubmit);
+    allDel.addEventListener("click", handleDelAll);
 }
 
 init()
