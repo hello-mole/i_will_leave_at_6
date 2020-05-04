@@ -17,7 +17,7 @@ button, ul {
 }
 /* ------------------- */
 .right{
-    flex-grow: 1;
+    flex-grow: 2;
 }
 
 .left{
@@ -39,7 +39,14 @@ button, ul {
 .todo__container > div{
     border-radius: 7px;
     background-color: aquamarine;
-    width : 200px;
-    margin: 1.5px;
+    margin: 3px;
     padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.donetodo {
+    background-color: slategrey !important;
+    opacity: 0.5;
+    color: lightgray;
 }

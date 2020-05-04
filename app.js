@@ -4,8 +4,14 @@ const todoList = document.querySelector(".js-todolist");
 
 let toDos = [];
 
-const TODOS_LS = "todos"
-const DELBTN_CL = "delBtn";
+const TODOS_LS = "todos";
+const DONE_CL = "donetodo";
+
+function doneToDo(event){
+    const btn = event.target;
+    const div = btn.parentNode;
+    div.classList.toggle(DONE_CL);
+}
 
 function deleteToDo(event){
     const btn = event.target;
@@ -31,12 +37,15 @@ function saveToDos(){
 
 function paintTodo(text){
     const div = document.createElement("div");
+    const doneBtn = document.createElement("button");
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
     const newID = toDos.length + 1;
+    doneBtn.innerText = "👌🏻";
     delBtn.innerText = "❌";
     span.innerText = text;
     div.appendChild(span);
+    div.appendChild(doneBtn);
     div.appendChild(delBtn);
     div.id = newID;
     todoList.appendChild(div);
@@ -46,6 +55,7 @@ function paintTodo(text){
     };
     toDos.push(toDoObj);
     saveToDos();
+    doneBtn.addEventListener("click", doneToDo);
     delBtn.addEventListener("click", deleteToDo);
 }
 
