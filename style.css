@@ -28,6 +28,7 @@ button {
 
 .left{
     flex-grow: 3;
+    overflow: auto;
 }
 
 .todo__container {
