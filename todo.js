@@ -49,6 +49,11 @@ function saveToDos(){
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 
+// 추가
+function handleSubmitMemo(event){
+    event.preventDefault();
+}
+
 function paintTodo(text){
     const div = document.createElement("div");
     const doneBtn = document.createElement("button");
@@ -75,6 +80,7 @@ function paintTodo(text){
     input.placeholder = "메모";
     form.appendChild(input);
     divMemo.appendChild(form);
+    form.addEventListener("submit", handleSubmitMemo);
     // 여기까지
     const toDoObj = {
         text: text,
