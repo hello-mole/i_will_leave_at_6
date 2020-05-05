@@ -4,8 +4,10 @@ const todoList = document.querySelector(".js-todolist");
 const allDel = document.querySelector(".js-allDel");
 
 let toDos = [];
+let done = [];
 
 const TODOS_LS = "todos";
+const FINISH_LS = "finish"
 const DONE_CL = "donetodo";
 
 function handleDelAll(event){
@@ -21,6 +23,9 @@ function doneToDo(event){
     const div_2 = btn.parentNode;
     const div = div_2.parentNode;
     div.classList.toggle(DONE_CL);
+    const toDoDone = {id: div.id, done: true};
+    done.push(toDoDone);
+    localStorage.setItem(FINISH_LS, JSON.stringify(done));
 }
 
 function deleteToDo(event){
@@ -53,6 +58,8 @@ function saveToDos(){
 function handleSubmitMemo(event){
     event.preventDefault();
 }
+
+// 여기까지
 
 function paintTodo(text){
     const div = document.createElement("div");
@@ -97,7 +104,7 @@ function drawTodos(){
     if(savedTodo !== null){
         const parsedTodo = JSON.parse(savedTodo);
         parsedTodo.forEach(function(toDo){paintTodo(toDo.text);})
-    }    
+    }
 }
 
 function init(){
