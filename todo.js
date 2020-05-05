@@ -25,7 +25,8 @@ function doneToDo(event){
 
 function deleteToDo(event){
     const btn = event.target;
-    const div = btn.parentNode;
+    const div_2 = btn.parentNode;
+    const div = div_2.parentNode;
     todoList.removeChild(div);
     const cleanToDos = toDos.filter(function(toDo){
         return toDo.id !== parseInt(div.id);

@@ -61,6 +61,7 @@ button {
     background-color: slategrey !important;
     opacity: 0.5;
     color: lightgray;
+    order: 99;
 }
 
 .allDel{
