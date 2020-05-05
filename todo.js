@@ -18,7 +18,8 @@ function handleDelAll(event){
 
 function doneToDo(event){
     const btn = event.target;
-    const div = btn.parentNode;
+    const div_2 = btn.parentNode;
+    const div = div_2.parentNode;
     div.classList.toggle(DONE_CL);
 }
 
@@ -53,14 +54,27 @@ function paintTodo(text){
     const delBtn = document.createElement("button");
     const span = document.createElement("span");
     const newID = toDos.length + 1;
+    // 메모추가
+    const divTodo = document.createElement("div");
+    const divMemo = document.createElement("div");
+    divMemo.classList.add("memo");
     doneBtn.innerText = "👌🏻";
     delBtn.innerText = "❌";
     span.innerText = text;
-    div.appendChild(span);
-    div.appendChild(doneBtn);
-    div.appendChild(delBtn);
+    divTodo.appendChild(span);
+    divTodo.appendChild(doneBtn);
+    divTodo.appendChild(delBtn);
+    div.appendChild(divTodo);
+    div.appendChild(divMemo);
     div.id = newID;
     todoList.appendChild(div);
+    // 메모만들기
+    const form = document.createElement("form");
+    const input = document.createElement("input");
+    input.placeholder = "메모";
+    form.appendChild(input);
+    divMemo.appendChild(form);
+    // 여기까지
     const toDoObj = {
         text: text,
         id: newID
