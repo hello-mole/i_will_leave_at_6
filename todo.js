@@ -15,6 +15,7 @@ function handleDelAll(event){
     saveToDos();
     while(todoList.hasChildNodes()){
         todoList.removeChild(todoList.firstChild);
+        localStorage.removeItem(FINISH_LS);
     }
 }
 
@@ -23,9 +24,13 @@ function doneToDo(event){
     const div_2 = btn.parentNode;
     const div = div_2.parentNode;
     div.classList.toggle(DONE_CL);
-    const toDoDone = {id: div.id, done: true};
-    done.push(toDoDone);
-    localStorage.setItem(FINISH_LS, JSON.stringify(done));
+    const currentFinish = localStorage.getItem(FINISH_LS);
+    // let check = JSON.parse(currentFinish).includes(div.id);
+    // if(!check){
+        const toDoDone = {id: div.id};
+        done.push(toDoDone);
+        localStorage.setItem(FINISH_LS, JSON.stringify(done));
+    // }
 }
 
 function deleteToDo(event){
@@ -104,6 +109,19 @@ function drawTodos(){
     if(savedTodo !== null){
         const parsedTodo = JSON.parse(savedTodo);
         parsedTodo.forEach(function(toDo){paintTodo(toDo.text);})
+    }
+    const currentFinish = localStorage.getItem(FINISH_LS);
+    if(currentFinish !== null){
+        const parsedFinish = JSON.parse(currentFinish);
+        parsedFinish.forEach(function(finishID){
+            const ID = finishID.id;
+            const findDiv = todoList.children;
+            if(ID === findDiv.id){
+                findDiv.classList.add(DONE_CL);
+            } else {
+                console.log("what?");
+            }
+            })
     }
 }
 
