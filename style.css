@@ -85,3 +85,8 @@ button {
     padding: 3px;
     color: #868e96;
 }
+
+.weatherIcon {
+    width: 70px;
+    vertical-align: -2em;
+}

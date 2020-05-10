@@ -1,16 +1,28 @@
 const weather = document.querySelector(".js-weather");
 
 const COORDS = 'coords';
+const ICON_CL = 'weatherIcon'
 const API_KEY = "2b3a694d2b1e39629613a0a3743e40d5";
 
 function getWeather(lat, lon){
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
     ).then(function(response){
         return response.json()
     }).then(function(json){
+        const divText = document.createElement("div");
+        const divIcon = document.createElement("div");
+        const span = document.createElement("span");
         const temperature = json.main.temp;
         const place = json.name;
-        weather.innerText = `여기는 ${place}, 지금 기온은 ${Math.round(temperature)}°C`
+        const condition = json.weather[0].description;
+        const iconcode = json.weather[0].icon; 
+        const img = document.createElement("img");
+        img.classList.add(ICON_CL);
+        img.src = `http://openweathermap.org/img/w/${iconcode}.png`;
+        divText.innerText = `여기는 ${place} 지금 ${Math.round(temperature)}°C`;
+        span.innerText = `${condition}`;
+        divIcon.append(img, span);
+        weather.append(divText, divIcon);
     })
 }
 
