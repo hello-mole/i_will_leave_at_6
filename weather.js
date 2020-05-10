@@ -5,7 +5,7 @@ const ICON_CL = 'weatherIcon'
 const API_KEY = "2b3a694d2b1e39629613a0a3743e40d5";
 
 function getWeather(lat, lon){
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
     ).then(function(response){
         return response.json()
     }).then(function(json){
