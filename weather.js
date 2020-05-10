@@ -15,14 +15,14 @@ function getWeather(lat, lon){
         const temperature = json.main.temp;
         const place = json.name;
         const condition = json.weather[0].description;
-        const iconcode = json.weather[0].icon; 
+        const iconcode = json.weather[0].main; 
         const img = document.createElement("img");
         img.classList.add(ICON_CL);
-        img.src = `http://openweathermap.org/img/w/${iconcode}.png`;
-        divText.innerText = `여기는 ${place} 지금 ${Math.round(temperature)}°C`;
+        img.src = `modern_weather_icons/${iconcode.toLowerCase()}.svg`;
+        divText.innerText = `여기는 ${place}, 지금 ${Math.round(temperature)}°C`;
         span.innerText = `${condition}`;
         divIcon.append(img, span);
-        weather.append(divText, divIcon);
+        weather.append(divIcon, divText);
     })
 }
 

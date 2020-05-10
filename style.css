@@ -5,7 +5,6 @@
 
 body{
     font-family: "KyoboHand";
-    display: flex;
 }
 
 h1 {
@@ -20,15 +19,30 @@ button {
     cursor: pointer;
 }
 
+footer {
+    color: gray;
+    text-align: center;
+    font-size: 0.8em;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+	padding: 15px 0;
+}
+
 /* ------------------- */
-.right{
-    flex-grow: 1;
-    margin-left: 20px;
+body > div{
+    display: flex;
 }
 
 .left{
     flex-grow: 1;
     overflow: auto;
+}
+
+.right{
+    flex-grow: 1;
+    margin-left: 100px;
 }
 
 .todo__container {
@@ -86,7 +100,11 @@ button {
     color: #868e96;
 }
 
+.currentWeather > div > span {
+    color: slategray;
+}
+
 .weatherIcon {
-    width: 70px;
-    vertical-align: -2em;
+    width: 100px;
+    vertical-align: text-bottom;
 }

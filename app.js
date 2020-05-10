@@ -1,4 +1,9 @@
 const today = document.querySelector(".js-today");
+const footer = document.querySelector("footer");
+
+function drawLisence(){
+    footer.innerText = "This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/."
+}
 
 function drawToday(){
     const now = new Date();
@@ -12,6 +17,7 @@ function drawToday(){
 
 function init(){
     drawToday();
+    drawLisence();
 }
 
 init()
