@@ -101,7 +101,7 @@ body > div{
 }
 
 .currentWeather > div > span {
-    color: slategray;
+    color: #1b377a;
 }
 
 .weatherIcon {

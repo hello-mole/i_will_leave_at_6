@@ -15,10 +15,10 @@ function getWeather(lat, lon){
         const temperature = json.main.temp;
         const place = json.name;
         const condition = json.weather[0].description;
-        const iconcode = json.weather[0].main; 
+        const iconcode = json.weather[0].icon; 
         const img = document.createElement("img");
         img.classList.add(ICON_CL);
-        img.src = `modern_weather_icons/${iconcode.toLowerCase()}.svg`;
+        img.src = `weather_icons/${iconcode}.svg`;
         divText.innerText = `여기는 ${place}, 지금 ${Math.round(temperature)}°C`;
         span.innerText = `${condition}`;
         divIcon.append(img, span);
