@@ -61,6 +61,13 @@ function loadCoords(){
 
 function init(){
     loadCoords();
+    setInterval(function(){
+        while(weather.hasChildNodes()){
+            weather.removeChild(weather.firstChild);
+        };
+        loadCoords();
+        console.log("done")}
+        , 60000);
 }
 
 init();
