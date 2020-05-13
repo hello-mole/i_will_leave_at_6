@@ -1,7 +1,10 @@
 const weather = document.querySelector(".js-weather");
 
 const COORDS = 'coords';
-const ICON_CL = 'weatherIcon'
+const ICON_CL = 'weatherIcon';
+const JSICON_W_CL = 'js-iconWeather';
+const JSTEXT_W_CL = 'js-textWeather';
+const JSSPAN_CL = 'js-spanWeather';
 const API_KEY = "2b3a694d2b1e39629613a0a3743e40d5";
 
 function getWeather(lat, lon){
@@ -18,6 +21,9 @@ function getWeather(lat, lon){
         const iconcode = json.weather[0].icon; 
         const img = document.createElement("img");
         img.classList.add(ICON_CL);
+        span.classList.add(JSSPAN_CL);
+        divText.classList.add(JSTEXT_W_CL);
+        divIcon.classList.add(JSICON_W_CL);
         img.src = `weather_icons/${iconcode}.svg`;
         divText.innerText = `여기는 ${place}, 지금 ${Math.round(temperature)}°C`;
         span.innerText = `${condition}`;

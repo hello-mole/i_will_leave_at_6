@@ -16,11 +16,7 @@ function drawToday(){
     const minutes = now.getMinutes();
     const sec = now.getSeconds();
     today.innerText = `${month}월 ${date}일 ${week[day]}: 오늘의 할 일`
-    setInterval(function(){
-        if(minutes == 9 && sec == 0){
-            console.log(hours,minutes,sec)
-            drawToday();}
-    }, 1000);
+    setInterval(drawToday, 60000);
 }
 
 function init(){
