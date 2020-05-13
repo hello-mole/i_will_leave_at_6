@@ -1,10 +1,9 @@
 const weather = document.querySelector(".js-weather");
+const headWeather = document.querySelector(".js-headWeather")
 
 const COORDS = 'coords';
 const ICON_CL = 'weatherIcon';
-const JSICON_W_CL = 'js-iconWeather';
-const JSTEXT_W_CL = 'js-textWeather';
-const JSSPAN_CL = 'js-spanWeather';
+const PLACE_CL = 'place';
 const API_KEY = "2b3a694d2b1e39629613a0a3743e40d5";
 
 function getWeather(lat, lon){
@@ -12,23 +11,22 @@ function getWeather(lat, lon){
     ).then(function(response){
         return response.json()
     }).then(function(json){
-        const divText = document.createElement("div");
-        const divIcon = document.createElement("div");
-        const span = document.createElement("span");
+        const spanPlace = document.createElement("span");
+        const span1 = document.createElement("span");
+        const span2 = document.createElement("span");
         const temperature = json.main.temp;
         const place = json.name;
         const condition = json.weather[0].description;
         const iconcode = json.weather[0].icon; 
         const img = document.createElement("img");
         img.classList.add(ICON_CL);
-        span.classList.add(JSSPAN_CL);
-        divText.classList.add(JSTEXT_W_CL);
-        divIcon.classList.add(JSICON_W_CL);
+        spanPlace.classList.add(PLACE_CL);
         img.src = `weather_icons/${iconcode}.svg`;
-        divText.innerText = `여기는 ${place}, 지금 ${Math.round(temperature)}°C`;
-        span.innerText = `${condition}`;
-        divIcon.append(img, span);
-        weather.append(divIcon, divText);
+        spanPlace.innerText = `         @${place}`;
+        span1.innerText = `${condition}`;
+        span2.innerText = `  ${Math.round(temperature)}°C`
+        weather.append(img, span1, span2);
+        headWeather.appendChild(spanPlace);
     })
 }
 

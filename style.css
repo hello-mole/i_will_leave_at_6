@@ -100,11 +100,17 @@ body > div{
     color: #868e96;
 }
 
-.currentWeather > div > span {
+.currentWeather > span {
     color: #1b377a;
+    font-size: 2rem;
 }
 
 .weatherIcon {
     width: 150px;
     vertical-align: text-bottom;
+}
+
+.place {
+    font-size: 0.9rem;
+    color: slategray;
 }
