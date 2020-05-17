@@ -161,7 +161,7 @@ function draw(num, colorname){
         if(NUM == 100){
             cheer.innerText = "얼른 퇴근하세요!!";
         } else {
-            cheer.innerText = `${100-NUM}% 만 더 하면 되요!`;
+            cheer.innerText = `${100-NUM}% 만 더 하면 돼요!`;
         }
     }, 500)
 }
