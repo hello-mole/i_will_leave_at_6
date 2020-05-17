@@ -31,13 +31,13 @@ function doneToDo(event){
         div.classList.add(DONE_CL);
         result.status = true;
         toDos = parsedTodo2;
-        saveToDos();
     } else {
         div.classList.remove(DONE_CL);
         result.status = false;
         toDos = parsedTodo2;
-        saveToDos();
     }
+    saveToDos();
+    drawChart();
 }
 
 function deleteToDo(event){
@@ -50,6 +50,7 @@ function deleteToDo(event){
     });
     toDos = cleanToDos;
     saveToDos();
+    drawChart();
 }
 
 function handleSubmit(event){
@@ -59,6 +60,7 @@ function handleSubmit(event){
         paintTodo(currentTodo, false);
         todoInput.value="";
     }
+    drawChart();
 }
 
 function saveToDos(){
@@ -123,8 +125,47 @@ function drawTodos(){
     }
 }
 
+
+// 차트부분
+const chart = document.querySelector(".js-chart");
+const persent = document.querySelector(".js-percent");
+
+let NUM = 0;
+
+function howMuch(){
+    const savedChart = localStorage.getItem(TODOS_LS);
+    const parsed = JSON.parse(savedChart);
+    const all = parsed.length;
+    const real = parsed.filter(done => done.status == true);
+    const doneNum = real.length;
+    console.log(all, doneNum);
+    NUM = Math.round((doneNum/all)*100);
+}
+
+function draw(max, colorname){
+    setTimeout(function(){
+        let i = 1;
+        const func1 = setInterval(function(){
+            if(i < max+1){
+                chart.style.background = `conic-gradient(${colorname} 0% ${i}%, #e9ecef ${i}% 100%)`
+                i++;
+            } else {
+                clearInterval(func1)
+            }
+        }, 10);
+        persent.innerText = `${NUM}%`;
+    }, 500)
+
+}
+
+function drawChart(){
+    howMuch();
+    draw(NUM, '#8b22ff');
+}
+
 function init(){
-    drawTodos()
+    drawTodos();
+    drawChart();
     todoForm.addEventListener("submit", handleSubmit);
     allDel.addEventListener("click", handleDelAll);
 }
