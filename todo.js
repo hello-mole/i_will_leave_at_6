@@ -143,12 +143,25 @@ function howMuch(){
     const real = parsed.filter(done => done.status == true);
     const doneNum = real.length;
     console.log(all, doneNum);
+    const realpersent = doneNum/all;
+    if(realpersent > 0){
     NUM = Math.round((doneNum/all)*100);
+    } else {
+    NUM = 0;
+    }
+}
+
+function cheerupMessage(){
+    if(NUM == 100){
+        cheer.innerText = "얼른 퇴근하세요!!";
+    } else {
+        cheer.innerText = `${100-NUM}% 만 더 하면 돼요!`;
+    }
 }
 
 function draw(num, colorname){
     setTimeout(function(){
-        let i = 1;
+        let i = 0;
         const func1 = setInterval(function(){
             if(i <= num){
                 chart.style.background = `conic-gradient(${colorname} 0% ${i}%, #e9ecef ${i}% 100%)`
@@ -158,11 +171,7 @@ function draw(num, colorname){
             }
         }, 10);
         persent.innerText = `${NUM}%`;
-        if(NUM == 100){
-            cheer.innerText = "얼른 퇴근하세요!!";
-        } else {
-            cheer.innerText = `${100-NUM}% 만 더 하면 돼요!`;
-        }
+        cheerupMessage();
     }, 500)
 }
 
