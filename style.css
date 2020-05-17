@@ -36,13 +36,13 @@ body > div{
 }
 
 .left{
-    flex-grow: 1;
+    width: 1500px;
     overflow: auto;
 }
 
 .right{
-    flex-grow: 3;
     margin-left: 100px;
+    width: 1000px;
 }
 
 .todo__container {
