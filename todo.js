@@ -3,6 +3,14 @@ const todoInput = document.querySelector("input");
 const todoList = document.querySelector(".js-todolist");
 const allDel = document.querySelector(".js-allDel");
 
+// 차트부분
+const chart = document.querySelector(".js-chart");
+const persent = document.querySelector(".js-percent");
+const cheer = document.querySelector(".js-cheer");
+
+let NUM = 0;
+// 여기까지
+
 let toDos = [];
 let done = [];
 
@@ -128,11 +136,6 @@ function drawTodos(){
 
 
 // 차트부분
-const chart = document.querySelector(".js-chart");
-const persent = document.querySelector(".js-percent");
-
-let NUM = 0;
-
 function howMuch(){
     const savedChart = localStorage.getItem(TODOS_LS);
     const parsed = JSON.parse(savedChart);
@@ -155,6 +158,11 @@ function draw(num, colorname){
             }
         }, 10);
         persent.innerText = `${NUM}%`;
+        if(num == 100){
+            cheer.innerText = "얼른 퇴근하세요!!";
+        } else {
+            cheer.innerText = `${100-NUM}% 만 더 하면 되요!`;
+        }
     }, 500)
 }
 
