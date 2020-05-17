@@ -8,7 +8,7 @@ let done = [];
 
 const TODOS_LS = "todos";
 const FINISH_LS = "finish"
-const DONE_CL = "donetodo"
+const DONE_CL = "donetodo" 
 
 function handleDelAll(event){
     toDos = [];
@@ -23,7 +23,23 @@ function doneToDo(event){
     const btn = event.target;
     const div_2 = btn.parentNode;
     const div = div_2.parentNode;
-    div.classList.toggle(DONE_CL);
+    const doneID = div.id;
+    const saved = localStorage.getItem(TODOS_LS);
+    const parsedTodo2 = JSON.parse(saved);
+    const result = parsedTodo2.find(what => what.id == doneID);
+    if(!result.status){
+        div.classList.add(DONE_CL);
+        result.status = true;
+        toDos = parsedTodo2;
+        saveToDos();
+    } else {
+        div.classList.remove(DONE_CL);
+        result.status = false;
+        toDos = parsedTodo2;
+        saveToDos();
+    }
+    // div.classList.toggle(DONE_CL);
+    // saveDone(div.id);
 }
 
 function deleteToDo(event){
@@ -42,10 +58,11 @@ function handleSubmit(event){
     event.preventDefault();
     const currentTodo = todoInput.value;
     if(currentTodo.length !== 0){
-        paintTodo(currentTodo);
+        paintTodo(currentTodo, false);
         todoInput.value="";
     }
 }
+
 function saveToDos(){
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
@@ -57,7 +74,7 @@ function handleSubmitMemo(event){
 
 // 여기까지
 
-function paintTodo(text){
+function paintTodo(text, status){
     const div = document.createElement("div");
     const doneBtn = document.createElement("button");
     const delBtn = document.createElement("button");
@@ -84,10 +101,15 @@ function paintTodo(text){
     form.appendChild(input);
     divMemo.appendChild(form);
     form.addEventListener("submit", handleSubmitMemo);
+    if(status){
+        div.classList.add(DONE_CL);
+        status = true;
+    }
     // 여기까지
     const toDoObj = {
         text: text,
-        id: newID
+        id: newID,
+        status: status
     };
     toDos.push(toDoObj);
     saveToDos();
@@ -99,7 +121,7 @@ function drawTodos(){
     const savedTodo = localStorage.getItem(TODOS_LS);
     if(savedTodo !== null){
         const parsedTodo = JSON.parse(savedTodo);
-        parsedTodo.forEach(function(toDo){paintTodo(toDo.text);})
+        parsedTodo.forEach(function(toDo){paintTodo(toDo.text, toDo.status);})
     }
 }
 
