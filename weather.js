@@ -69,6 +69,7 @@ function init(){
         while(weather.hasChildNodes()){
             weather.removeChild(weather.firstChild);
         };
+        headWeather.innerHTML = "날씨";
         loadCoords();}
         , 60000);
 }
