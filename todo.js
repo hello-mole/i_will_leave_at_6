@@ -38,8 +38,6 @@ function doneToDo(event){
         toDos = parsedTodo2;
         saveToDos();
     }
-    // div.classList.toggle(DONE_CL);
-    // saveDone(div.id);
 }
 
 function deleteToDo(event){
