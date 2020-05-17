@@ -122,6 +122,7 @@ function drawTodos(){
     if(savedTodo !== null){
         const parsedTodo = JSON.parse(savedTodo);
         parsedTodo.forEach(function(toDo){paintTodo(toDo.text, toDo.status);})
+        drawChart();
     }
 }
 
@@ -142,11 +143,11 @@ function howMuch(){
     NUM = Math.round((doneNum/all)*100);
 }
 
-function draw(max, colorname){
+function draw(num, colorname){
     setTimeout(function(){
         let i = 1;
         const func1 = setInterval(function(){
-            if(i < max+1){
+            if(i <= num){
                 chart.style.background = `conic-gradient(${colorname} 0% ${i}%, #e9ecef ${i}% 100%)`
                 i++;
             } else {
@@ -155,7 +156,6 @@ function draw(max, colorname){
         }, 10);
         persent.innerText = `${NUM}%`;
     }, 500)
-
 }
 
 function drawChart(){
@@ -165,7 +165,6 @@ function drawChart(){
 
 function init(){
     drawTodos();
-    drawChart();
     todoForm.addEventListener("submit", handleSubmit);
     allDel.addEventListener("click", handleDelAll);
 }
