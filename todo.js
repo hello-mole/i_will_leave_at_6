@@ -158,7 +158,7 @@ function draw(num, colorname){
             }
         }, 10);
         persent.innerText = `${NUM}%`;
-        if(num == 100){
+        if(NUM == 100){
             cheer.innerText = "얼른 퇴근하세요!!";
         } else {
             cheer.innerText = `${100-NUM}% 만 더 하면 되요!`;
