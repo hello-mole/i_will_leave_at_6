@@ -69,8 +69,7 @@ function init(){
         while(weather.hasChildNodes()){
             weather.removeChild(weather.firstChild);
         };
-        loadCoords();
-        console.log("done")}
+        loadCoords();}
         , 60000);
 }
 

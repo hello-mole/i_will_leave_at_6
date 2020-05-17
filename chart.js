@@ -1,8 +1,10 @@
 const chart = document.querySelector(".js-chart");
+const persent = document.querySelector(".js-percent");
 
+const NUM = 50;
 
 if(chart){
-    draw(50, '#8b22ff');
+    draw(NUM, '#8b22ff');
 }
 
 function draw(max, colorname){
@@ -16,5 +18,7 @@ function draw(max, colorname){
                 clearInterval(func1)
             }
         }, 10);
-    }, 1000);
+        persent.innerText = `${NUM}%`;
+    }, 1000)
+
 }

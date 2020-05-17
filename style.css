@@ -41,13 +41,17 @@ body > div{
 }
 
 .right{
-    flex-grow: 1;
+    flex-grow: 3;
     margin-left: 100px;
 }
 
 .todo__container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.weather {
+    display: unset;
 }
 
 .writeTodo > input{
@@ -116,7 +120,7 @@ body > div{
 }
 
 .chart-part {
-    flex: unset;
+
 }
 
 .pie-chart {
@@ -129,14 +133,14 @@ body > div{
     transition-timing-function: ease
   }
 
-.persent {
+.pie-chart > span {
     background: #fff;
     display : block;
     position: absolute;
     top:50%; left:50%;
-    width:200px; height:200px;
+    width:100px; height:100px;
     border-radius: 50%;
-    text-align:center; line-height: 200px;
-    font-size:30px;
+    text-align:center; line-height: 100px;
+    font-size:20px;
     transform: translate(-50%, -50%);
   }
