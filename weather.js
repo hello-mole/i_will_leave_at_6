@@ -69,6 +69,7 @@ function init(){
         while(weather.hasChildNodes()){
             weather.removeChild(weather.firstChild);
         };
+        headWeather.removeChild(headWeather.firstChild);
         loadCoords();}
         , 60000);
 }
