@@ -71,7 +71,7 @@ function init(){
         };
         headWeather.innerHTML = "날씨";
         loadCoords();}
-        , 60000);
+        , 3600000);
 }
 
 init();
