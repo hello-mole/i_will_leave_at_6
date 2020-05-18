@@ -1,5 +1,5 @@
 const weather = document.querySelector(".js-weather");
-const headWeather = document.querySelector(".js-headWeather")
+const headWeather = document.querySelector(".js-headWeather");
 
 const COORDS = 'coords';
 const ICON_CL = 'weatherIcon';
@@ -19,10 +19,14 @@ function getWeather(lat, lon){
         const condition = json.weather[0].description;
         const iconcode = json.weather[0].icon; 
         const img = document.createElement("img");
+        // 시간
+        const weathertime = new Date();
+        const hour = weathertime.getHours();
+        // 
         img.classList.add(ICON_CL);
         spanPlace.classList.add(PLACE_CL);
         img.src = `weather_icons/${iconcode}.svg`;
-        spanPlace.innerText = `         @${place}`;
+        spanPlace.innerText = `         @${place} ${hour}시 기준`;
         span1.innerText = `${condition}`;
         span2.innerText = `  ${Math.round(temperature)}°C`
         weather.append(img, span1, span2);
