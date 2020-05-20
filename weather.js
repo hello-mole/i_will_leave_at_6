@@ -4,7 +4,16 @@ const headWeather = document.querySelector(".js-headWeather");
 const COORDS = 'coords';
 const ICON_CL = 'weatherIcon';
 const PLACE_CL = 'place';
+const REFRESH_CL = 'refresh';
 const API_KEY = "2b3a694d2b1e39629613a0a3743e40d5";
+
+function refreshWeather(event){
+    while(weather.hasChildNodes()){
+        weather.removeChild(weather.firstChild);
+    };
+    headWeather.innerHTML = "날씨";
+    loadCoords();
+}
 
 function getWeather(lat, lon){
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
@@ -14,6 +23,7 @@ function getWeather(lat, lon){
         const spanPlace = document.createElement("span");
         const span1 = document.createElement("span");
         const span2 = document.createElement("span");
+        const refresh = document.createElement("span");
         const temperature = json.main.temp;
         const place = json.name;
         const condition = json.weather[0].description;
@@ -25,12 +35,15 @@ function getWeather(lat, lon){
         // 
         img.classList.add(ICON_CL);
         spanPlace.classList.add(PLACE_CL);
+        refresh.classList.add(PLACE_CL, REFRESH_CL);
         img.src = `weather_icons/${iconcode}.svg`;
-        spanPlace.innerText = `         @${place} ${hour}시 기준`;
+        spanPlace.innerText = `         @${place} ${hour}시 기준 `;
         span1.innerText = `${condition}`;
         span2.innerText = `  ${Math.round(temperature)}°C`
+        refresh.innerText = `🔄새로고침`;
         weather.append(img, span1, span2);
-        headWeather.appendChild(spanPlace);
+        headWeather.append(spanPlace, refresh);
+        refresh.addEventListener("click", refreshWeather);
     })
 }
 
@@ -69,13 +82,6 @@ function loadCoords(){
 
 function init(){
     loadCoords();
-    setInterval(function(){
-        while(weather.hasChildNodes()){
-            weather.removeChild(weather.firstChild);
-        };
-        headWeather.innerHTML = "날씨";
-        loadCoords();}
-        , 3600000);
 }
 
 init();

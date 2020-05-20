@@ -170,7 +170,7 @@ function draw(num, colorname){
                 clearInterval(func1)
             }
         }, 10);
-        persent.innerText = `${NUM}%`;
+        persent.innerText = `${NUM}% 했음!`;
         cheerupMessage();
     }, 500)
 }
