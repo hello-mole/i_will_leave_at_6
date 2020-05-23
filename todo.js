@@ -153,9 +153,11 @@ function howMuch(){
 
 function cheerupMessage(){
     if(NUM == 100){
-        cheer.innerText = "얼른 퇴근하세요!!";
+        cheer.innerText = "다했다!!🤩 얼른 퇴근하세요!!👋";
+    } else if(NUM > 85) {
+        cheer.innerText = `${100-NUM}% 남았어요. 거의 다 했네요!👏`
     } else {
-        cheer.innerText = `${100-NUM}% 만 더 하면 돼요!`;
+        cheer.innerText = `${100-NUM}% 만 더 하면 돼요!💪`;
     }
 }
 
