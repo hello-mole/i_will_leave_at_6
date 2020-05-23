@@ -47,6 +47,24 @@ function getWeather(lat, lon){
     })
 }
 
+function sixPmWeather(lat, lon){
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=kr`
+    ).then(function(response2){
+        return response2.json()
+    }).then(function(json2){
+        const now2 = new Date();
+        const year2 = now2.getFullYear();
+        const month2 = now2.getMonth()+1;
+        const date2 = now2.getDate();
+        const time = `${year2}-0${month2}-${date2} 09:00:00`;
+        const list = json2.list;
+        console.log(time);
+        console.log(json2);
+        const find = list.find(weather => weather.dt_txt === time);
+        console.log(find);
+    })
+};
+
 function saveCoords(coordsObj){
     localStorage.setItem(COORDS, JSON.stringify(coordsObj));
 }
@@ -60,6 +78,7 @@ function handleGeoSucces(position){
     };
     saveCoords(coordsObj);
     getWeather(latitude, longitude);
+    sixPmWeather(latitude, longitude);
 }
 
 function handleGeoError(){
@@ -76,7 +95,10 @@ function loadCoords(){
         askForCoords();
     } else {
         const parsedCoords = JSON.parse(loadedCoords);
-        getWeather(parsedCoords.latitude, parsedCoords.longitude);
+        let currentLat = parsedCoords.latitude;
+        let currentLog = parsedCoords.longitude;
+        getWeather(currentLat, currentLog);
+        sixPmWeather(currentLat, currentLog);
     }
 }
 
