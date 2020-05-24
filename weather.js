@@ -1,5 +1,6 @@
 const weather = document.querySelector(".js-weather");
 const headWeather = document.querySelector(".js-headWeather");
+const sixWeather = document.querySelector(".js-sixPmWeather");
 
 const COORDS = 'coords';
 const ICON_CL = 'weatherIcon';
@@ -58,10 +59,9 @@ function sixPmWeather(lat, lon){
         const date2 = now2.getDate();
         const time = `${year2}-${month2 > 9 ? month2 : '0' + month2}-${date2} 09:00:00`;
         const list = json2.list;
-        console.log(time);
-        console.log(json2);
         const find = list.find(weather => weather.dt_txt === time);
-        console.log(find);
+        const x = find.weather[0];
+        sixWeather.innerText = `퇴근무렵 날씨(오후 6시)는 ${Math.round(find.main.temp)}°C, ${x.description}`
     })
 };
 
