@@ -56,7 +56,7 @@ function sixPmWeather(lat, lon){
         const year2 = now2.getFullYear();
         const month2 = now2.getMonth()+1;
         const date2 = now2.getDate();
-        const time = `${year2}-0${month2}-${date2} 09:00:00`;
+        const time = `${year2}-${month2 > 9 ? month2 : '0' + month2}-${date2} 09:00:00`;
         const list = json2.list;
         console.log(time);
         console.log(json2);
