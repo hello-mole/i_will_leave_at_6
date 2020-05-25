@@ -57,11 +57,20 @@ function sixPmWeather(lat, lon){
         const year2 = now2.getFullYear();
         const month2 = now2.getMonth()+1;
         const date2 = now2.getDate();
+        const maintime = `${year2}-${month2 > 9 ? month2 : '0' + month2}-${date2}`;
         const time = `${year2}-${month2 > 9 ? month2 : '0' + month2}-${date2} 09:00:00`;
+        console.log(time);
         const list = json2.list;
         const find = list.find(weather => weather.dt_txt === time);
         const x = find.weather[0];
-        sixWeather.innerText = `퇴근무렵 날씨(오후 6시)는 ${Math.round(find.main.temp)}°C, ${x.description}`
+        console.log(x);
+        if(x.icon == "10d"|| x.icon == "10n" || x.icon == "9n" || x.icon == "9d"){
+            sixWeather.innerText = `퇴근날씨는 ${Math.round(find.main.temp)}°C, ${x.description} (${maintime} 오후 6시)\n 우산 🌂꼭 챙기세요!`
+            sixWeather.classList.add("raining");
+        } else {
+            sixWeather.innerText = `퇴근날씨는 ${Math.round(find.main.temp)}°C, ${x.description} (${maintime} 오후 6시)`
+
+        }
     })
 };
 

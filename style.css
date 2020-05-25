@@ -148,3 +148,8 @@ body > div{
       cursor: pointer;
       text-decoration: underline;
   }
+
+  .raining {
+      color: red;
+      background-color: rgba(227, 250, 252, 50);
+  }
